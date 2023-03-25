@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { ReactNode } from "react";
+import Header from "./Header";
 
 interface Props {
     children: ReactNode;
@@ -25,9 +26,8 @@ export default function Layout({ children, title }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex min-h-screen flex-col justify-between">
-        <header>
-        </header>
+      <div className="flex min-h-screen flex-col justify-between px-12">
+        <Header />
 
         <main>{children}</main>
 
