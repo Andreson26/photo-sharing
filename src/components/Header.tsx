@@ -1,33 +1,25 @@
 import Link from "next/link";
 import { useState } from "react";
-import {
-  BsSearch,
-  BsCameraFill,
-  BsFillHeartFill,
-  BsToggleOff,
-  BsToggleOn,
-} from "react-icons/Bs";
+import { BsCameraFill, BsFillHeartFill, BsSearch } from "react-icons/Bs";
+import ModeBtns from "./ModeBtns";
 
 export default function Header() {
-    const [toggle, setToggle] = useState<boolean>(false);
     
   return (
     <header className="my-6">
-      <nav className="flex items-center h-12 justify-between">
-        <div className="w-3/4 flex items-center justify-start space-x-4 p-4 rounded-lg shadow-md">
+      <nav className="flex items-center justify-between">
+        <div className="flex items-center justify-start space-x-4 p-1 rounded-lg shadow-sm bg-gray-100 text-gray-500 md:w-3/4 md:p-3">
           <BsSearch size={23}/>
-          <input type="text" placeholder="Search..." className="flex-1 focus:outline-none "/>
+          <input type="text" placeholder="Search..." className="flex-1 focus:outline-none bg-transparent"/>
         </div>
-        <div className="w-1/4 flex items-center justify-end space-x-4">
-          <Link href="">
-            <BsCameraFill size={25}/>
+        <div className="flex items-center justify-end space-x-2 md:w-1/4 md:space-x-4 lg:space-x-8">
+          <Link href="" className="icon">
+            <BsCameraFill size={20}/>
           </Link>
-          <Link href="">
-            <BsFillHeartFill size={25} className=""/>
+          <Link href="" className="icon">
+            <BsFillHeartFill size={20}/>
           </Link>
-          <Link href="">
-            {toggle ? <BsToggleOn size={25}/> : <BsToggleOff size={25}/>}
-          </Link>
+          <ModeBtns />
         </div>
       </nav>
     </header>
