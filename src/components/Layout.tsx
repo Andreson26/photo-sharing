@@ -26,7 +26,7 @@ export default function Layout({ children, title }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex min-h-screen flex-col justify-between px-4 text-sm md:px-16 md:text-lg">
+      <div className="flex min-h-screen flex-col justify-between px-4 text-sm md:px-16 transition md:text-lg">
         <Header />
 
         <main>{children}</main>
