@@ -8,14 +8,7 @@ interface Props {
   }
 
 export default function Layout({ children, title }: Props) {
-  //const [year, setYear] = useState<Year | undefined>(undefined);
   const currentYear = new Date().getFullYear();
-
- /* useEffect(() => {
-    const interval = setInterval(() => {
-      setYear(new Date().getFullYear());
-    }, 1000);
-  }, []);*/
 
   return (
     <>

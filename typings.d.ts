@@ -1,4 +1,5 @@
-export interface Photo {
+ interface Photo {
+    [x: string]: ReactNode;
     id: string;
     created_at: string;
     updated_at: string;
@@ -93,3 +94,7 @@ export interface Photo {
         accepted_tos: boolean;
     };
 }
+
+export type PhotoList = Photo[];
+
+export type SinglePhoto = Photo;
