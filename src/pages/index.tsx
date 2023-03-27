@@ -1,19 +1,19 @@
 import Layout from "@/components/Layout";
 import PhotoItem from "@/components/PhotoItem";
 import requests from "@/utils/requests";
-import { Photo } from "../../typings";
+import { PhotoList, SinglePhoto } from "../../typings";
 
 interface Props {
-  fetchPhotos: Photo[];
-  collections: Photo[];
+  fetchPhotos: PhotoList;
+  collections: PhotoList;
 }
 
 export default function Home({ fetchPhotos, collections }: Props) {
-  console.log(fetchPhotos);
+  
   return (
     <Layout title="home-page">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {fetchPhotos?.map((photo: Photo) => {
+        {fetchPhotos?.map((photo: SinglePhoto) => {
           return <PhotoItem key={photo.id} photo={photo} />;
         })}
       </div>
@@ -31,6 +31,7 @@ export const getServerSideProps = async () => {
     props: {
       fetchPhotos,
       collections,
+     
     },
   };
 };

@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header className="my-6">
       <nav className="flex items-center justify-between">
-        <div className="flex items-center space-x-4 transition md:w-3/4 md:p-1 md:space-x-6">
+        <div className="flex items-center space-x-2 transition md:w-3/4 md:p-1 md:space-x-6">
           <Link href="/" className="icons">
             <BsCameraFill size={20} />
           </Link>
