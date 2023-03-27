@@ -12,7 +12,7 @@ export default function Header() {
     <header className="my-6">
       <nav className="flex items-center justify-between">
         <div className="flex items-center space-x-4 transition md:w-3/4 md:p-1 md:space-x-6">
-          <Link href="/" className="icon">
+          <Link href="/" className="icons">
             <BsCameraFill size={20} />
           </Link>
           <div className="w-full flex items-center space-x-2 py-1 px-4 rounded-lg shadow-sm bg-gray-100 text-gray-500">
@@ -26,10 +26,10 @@ export default function Header() {
         </div>
 
         <div className="flex items-center justify-end space-x-2 md:w-1/4 md:space-x-4 lg:space-x-6">
-          <Link href="" className="icon">
+          <Link href="" className="icons">
             <BsUpload size={20} />
           </Link>
-          <Link href="" className="icon">
+          <Link href="" className="icons">
             <BsFillHeartFill size={20} />
           </Link>
           <ModeBtns />
