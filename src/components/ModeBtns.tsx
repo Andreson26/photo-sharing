@@ -9,12 +9,12 @@ export default function ModeBtns() {
     useEffect(() => setMounted(true), []);
 
     return(
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col text-xs font-light">
             {mounted && (
                 <button
                     aria-label="Toggle Dark Mode"
                     type="button"
-                    className="p-2 rounded-md bg-gray-200 dark:bg-gray-700"
+                    className="px-2 py-1 rounded-md bg-gray-200 dark:bg-gray-700"
                     onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
                     {theme === "dark" ? (
@@ -24,6 +24,7 @@ export default function ModeBtns() {
                     )}
                 </button>
             )}
+            <span>Theme</span>
         </div>
     )
 }

@@ -8,7 +8,7 @@
   }
 
   .icons {
-    @apply p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 transition duration-500 ease-in-out;
+    @apply flex flex-col items-center p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 transition duration-500 ease-in-out text-xs font-light;
   }
 
   .singlePhot {
