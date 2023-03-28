@@ -5,10 +5,9 @@ import { PhotoList, SinglePhoto } from "../../typings";
 
 interface Props {
   fetchPhotos: PhotoList;
-  collections: PhotoList;
 }
 
-export default function Home({ fetchPhotos, collections }: Props) {
+export default function Home({ fetchPhotos }: Props) {
   
   return (
     <Layout title="home-page">
@@ -22,16 +21,15 @@ export default function Home({ fetchPhotos, collections }: Props) {
 }
 
 export const getServerSideProps = async () => {
-  const [fetchPhotos, collections] = await Promise.all([
-    fetch(requests.fetchPhotos).then((res) => res.json()),
-    fetch(requests.collections).then((res) => res.json()),
-  ]);
+  const res = await fetch(
+    `${requests.fetchPhotos}`
+  );
+  const data = await res.json();
 
   return {
     props: {
-      fetchPhotos,
-      collections,
-     
+      fetchPhotos: data,
     },
+
   };
 };

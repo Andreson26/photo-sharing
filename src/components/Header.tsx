@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   BsCameraFill,
-  BsUpload,
+  BsFillCollectionFill,
   BsFillHeartFill,
   BsSearch,
 } from "react-icons/Bs";
@@ -27,9 +27,9 @@ export default function Header() {
         </div>
 
         <div className="flex items-center justify-end space-x-2 md:w-1/4 md:space-x-4 lg:space-x-6">
-          <Link href="" className="icons">
-            <BsUpload size={20} />
-            <span>Upload</span>
+          <Link href="/collections" className="icons">
+            <BsFillCollectionFill size={20} />
+            <span>Collections</span>
           </Link>
           <Link href="" className="icons">
             <BsFillHeartFill size={20} />

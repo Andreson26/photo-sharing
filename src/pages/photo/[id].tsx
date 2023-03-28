@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router";
 import { FcLike } from "react-icons/fc";
 import { ImCross } from "react-icons/im";
@@ -12,30 +12,49 @@ interface Props {
   photo: SinglePhoto;
 }
 
-export default function photoDetail({ photo }: Props) {
+export default function photoDetail() {
   const router = useRouter();
+  const { id } = router.query;
+  const [photoDetail, setPhotoDetail] = useState<SinglePhoto | null>(null);
+
+  useEffect(() => {
+    async function fetchPhotoDetail() {
+      const res = await fetch(
+        `https://api.unsplash.com/photos/${id}?client_id=${API_KEY}`
+      );
+      const data = await res.json();
+      setPhotoDetail(data);
+    }
+    if(id) {
+      fetchPhotoDetail();
+    }
+  }, [id]);
 
   const handleClicked = () => {
     router.push("/");
   };
 
+  if (!photoDetail) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <Layout title={photo.alt_description}>
+    <Layout title={photoDetail.alt_description}>
       <div className="bg-gray-300 p-2 md:mx-auto rounded dark:bg-gray-700 md:p-4 lg:w-[900px]">
         <div className="flex items-center justify-between">
           <div className="flex space-x-4">
             <img
-              src={photo.user.profile_image.medium}
-              alt={photo.alt_description}
+              src={photoDetail.user.profile_image.medium}
+              alt={photoDetail.alt_description}
               className="rounded"
             />
             <div>
-              <p className="text-base font-extrabold">{photo.user.username}</p>
+              <p className="text-base font-extrabold">{photoDetail.user.username}</p>
               <p className="text-sm font-light">
-                {capitalize(photo?.alt_description)}
+                {capitalize(photoDetail.alt_description)}
               </p>
               <span className="text-xs font-light">
-                {timeAgo(photo.created_at)} ago
+                {timeAgo(photoDetail.created_at)} ago
               </span>
             </div>
           </div>
@@ -43,31 +62,31 @@ export default function photoDetail({ photo }: Props) {
         </div>
         <div className="my-4">
           <img
-            src={photo.urls.regular}
-            alt={photo.alt_description}
+            src={photoDetail.urls.regular}
+            alt={photoDetail.alt_description}
             className="rounded h-[500px] w-full object-cover"
           />
         </div>
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center space-x-2">
             <FcLike size={30} />
-            <span className="font-light">{photo.likes}</span>
+            <span className="font-light">{photoDetail.likes}</span>
           </div>
           <div className="flex items-center space-x-2">
             <p className="font-bold">views:</p>
-            <span className="font-light">{photo.views}</span>
+            <span className="font-light">{photoDetail.views}</span>
           </div>
           <div className="flex items-center space-x-2">
             <p className="font-bold">Updated:</p>
-            <span className="font-ligh">{timeAgo(photo.updated_at)}</span>
+            <span className="font-ligh">{timeAgo(photoDetail.updated_at)}</span>
           </div>
         </div>
-      </div>
+  </div>
     </Layout>
   );
 }
 
-export const getServerSideProps = async (context: { query: { id: any } }) => {
+/*export const getServerSideProps = async (context: { query: { id: any } }) => {
 
   const id = context.query.id;
   try {
@@ -92,6 +111,6 @@ export const getServerSideProps = async (context: { query: { id: any } }) => {
       notFound: true,
     };
   }
-};
+};*/
 
 //getServerSideProp()
