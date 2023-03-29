@@ -30,9 +30,9 @@ export default function photoDetail() {
     }
   }, [id]);
 
-  const handleClicked = () => {
-    router.push("/");
-  };
+  const backToPreviousPage = () => {
+    router.back();
+  }
 
   if (!photoDetail) {
     return <div>Loading...</div>;
@@ -58,7 +58,7 @@ export default function photoDetail() {
               </span>
             </div>
           </div>
-          <ImCross size={20} className="text-red-500 cursor-pointer" onClick={handleClicked} />
+          <ImCross size={20} className="text-red-500 cursor-pointer" onClick={backToPreviousPage} />
         </div>
         <div className="my-4">
           <img
