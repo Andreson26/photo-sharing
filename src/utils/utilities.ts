@@ -11,3 +11,7 @@ export function timeAgo(timestamp: string) {
     return timeAgoString;
 }
 
+export function likeCount(num: number) {
+    if(num < 2 ) return `${num} like`;
+    return `${num} likes`;
+}

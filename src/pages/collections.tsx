@@ -11,6 +11,7 @@ interface Props {
 }
 
 export default function Collections({ fetchCollections }: Props) {
+  console.log(fetchCollections.slice(3))
 
   return (
     <Layout title="collections-page">
@@ -19,7 +20,7 @@ export default function Collections({ fetchCollections }: Props) {
           Here are some recommended collections for you
         </h1>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:gap-12 ">
-          {fetchCollections?.map((collection: SingleCollection) => {
+          {fetchCollections.slice(3).map((collection: SingleCollection) => {
             return (
               <CollectionItem key={collection.id} collection={collection} />
             );
