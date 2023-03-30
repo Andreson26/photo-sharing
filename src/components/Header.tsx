@@ -31,9 +31,9 @@ export default function Header() {
             <BsFillCollectionFill size={20} />
             <span>Collections</span>
           </Link>
-          <Link href="" className="icons">
+          <Link href="/randomPhotos" className="icons">
             <BsFillHeartFill size={20} />
-            <span>Saved</span>
+            <span>random</span>
           </Link>
           <ModeBtns />
         </div>
