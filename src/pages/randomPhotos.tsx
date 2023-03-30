@@ -11,7 +11,7 @@ export default function RandomPhotos({ randomPhotos }: Props) {
   console.log(randomPhotos);
   return (
     <Layout title="random-photos">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:mx-[200px]">
         {randomPhotos?.map((photo: SinglePhoto) => {
           return <RandomPhoto key={photo.id} photo={photo} />;
         })}

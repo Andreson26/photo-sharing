@@ -12,6 +12,6 @@ export function timeAgo(timestamp: string) {
 }
 
 export function pluralSingular(num: number) {
-    if(num < 2 ) return `${num} like`;
-    return `${num} likes`;
+    if(num < 2 ) return `${num} Like`;
+    return `${num} Likes`;
 }
