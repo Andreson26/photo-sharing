@@ -11,35 +11,49 @@ interface Props {
 }
 
 interface Props {
-    collectionPhotos: PhotoList;
+  collectionPhotos: PhotoList;
 }
 
 export default function CollectionDetaill() {
   const [collectionDetail, setCollectionDetail] =
     useState<SingleCollection | null>(null);
-    const [collectionPhotos, setCollectionPhotos] = useState<PhotoList | null>(null);
+  const [collectionPhotos, setCollectionPhotos] = useState<PhotoList | null>(
+    null
+  );
+  const [isFollowing, setIsFollowing] = useState<boolean>(false);
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
     async function fetchCollectionDetail() {
-        const [collectionDetail, collectionPhotos] = await Promise.all([
-            fetch(`https://api.unsplash.com/collections/${id}?client_id=${API_KEY}`).then((res) => res.json()),
-            fetch(`https://api.unsplash.com/collections/${id}/photos?client_id=${API_KEY}&per_page=30`).then((res) => res.json()),
-        ])
-        setCollectionDetail(collectionDetail);
-        setCollectionPhotos(collectionPhotos);
+      const [collectionDetail, collectionPhotos] = await Promise.all([
+        fetch(
+          `https://api.unsplash.com/collections/${id}?client_id=${API_KEY}`
+        ).then((res) => res.json()),
+        fetch(
+          `https://api.unsplash.com/collections/${id}/photos?client_id=${API_KEY}&per_page=30`
+        ).then((res) => res.json()),
+      ]);
+      setCollectionDetail(collectionDetail);
+      setCollectionPhotos(collectionPhotos);
     }
     if (id) {
-        fetchCollectionDetail();
+      fetchCollectionDetail();
     }
-    }, [id]);
-    
-      
+  }, [id]);
+
+  function handleFollow() {
+    setIsFollowing(true);
+  }
+
+  function handleUnfollow() {
+    setIsFollowing(false);
+  }
+
   if (!collectionDetail || !collectionPhotos) {
     return <div>Loading...</div>;
   }
-console.log(CollectionDetaill)
+  console.log(CollectionDetaill);
   return (
     <Layout title={collectionDetail.title}>
       <div className="bg-gray-300 p-2 md:mx-auto rounded dark:bg-gray-700 md:p-4 lg:w-[900px]">
@@ -67,22 +81,36 @@ console.log(CollectionDetaill)
             <p className="text-sm font-light">
               {collectionDetail.user.total_likes} total likes
             </p>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-base">
-              Follow
-            </button>
+
+            {isFollowing ? (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-base"
+                onClick={handleUnfollow}
+              >
+                unFollow
+              </button>
+            ) : (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-base"
+                onClick={handleFollow}
+              >
+                Follow
+              </button>
+            )}
           </div>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 ">
-            {collectionPhotos.map((collectionPhoto: SinglePhoto) => (
-                <CollectionPhotos key={collectionPhoto.id} collectionPhoto={collectionPhoto} />
-            ))}
+          {collectionPhotos.map((collectionPhoto: SinglePhoto) => (
+            <CollectionPhotos
+              key={collectionPhoto.id}
+              collectionPhoto={collectionPhoto}
+            />
+          ))}
         </div>
-
       </div>
     </Layout>
   );
 }
-
 
 /*export const getServerSideProps = async (context: { query: { id: any; }; }) => {
     const { id } = context.query;
@@ -109,6 +137,3 @@ console.log(CollectionDetaill)
         };
       }
 }*/
-
-
-
