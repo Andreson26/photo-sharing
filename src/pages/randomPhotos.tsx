@@ -7,8 +7,8 @@ interface Props {
   randomPhotos: PhotoList;
 }
 
-export default function RandomPhotos({ randomPhotos }: Props) {
-  console.log(randomPhotos);
+export default function RandomPhotos({ randomPhotos}: Props) {
+
   return (
     <Layout title="random-photos">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:mx-[200px]">

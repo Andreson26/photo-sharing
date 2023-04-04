@@ -4,7 +4,7 @@ import Header from "./Header";
 
 interface Props {
     children: ReactNode;
-    title: String;
+    title: string | object | undefined;
   }
 
 export default function Layout({ children, title }: Props) {

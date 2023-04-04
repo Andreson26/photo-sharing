@@ -11,7 +11,7 @@ interface PhotoItemProps {
 }
 
 export default function PhotoItem({ photo }: PhotoItemProps) {
-  console.log(photo)
+  
   return (
     <div className="relative cursor-pointer rounded shadow-md ">
       <Link href={`/photo/${photo.id}`} >

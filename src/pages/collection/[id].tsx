@@ -53,7 +53,7 @@ export default function CollectionDetaill() {
   if (!collectionDetail || !collectionPhotos) {
     return <div>Loading...</div>;
   }
-  console.log(CollectionDetaill);
+
   return (
     <Layout title={collectionDetail.title}>
       <div className="bg-gray-300 p-2 md:mx-auto rounded dark:bg-gray-700 md:p-4 lg:w-[900px]">

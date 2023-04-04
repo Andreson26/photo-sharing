@@ -11,7 +11,7 @@ export default function Home({ fetchPhotos }: Props) {
   
   return (
     <Layout title="home-page">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:mx-[200px]">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:mx-[200px]">
         {fetchPhotos?.map((photo: SinglePhoto) => {
           return <PhotoItem key={photo.id} photo={photo} />;
         })}

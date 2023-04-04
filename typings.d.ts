@@ -222,6 +222,66 @@ interface Collection {
   };
 }
 
+const searchResult: SeachResult = {
+  total: number,
+  total_pages: number,
+  results: [
+    {
+      alt_description: string,
+      created_at: string,
+      description: string,
+      id: string,
+      likes: number,
+      links: {
+        download: string,
+        download_location: string, 
+        html: string,
+        self: string,
+      },
+      updated_at: string,
+      urls: {
+        full: string,
+        raw: string,
+        regular: string,
+        small: string,
+        small_s3: string,
+        thumb: string,
+      },
+      user: {
+        bio: string,
+        first_name: string,
+        id: string,
+        instagram_username: string,
+        last_name: string,
+        links: {
+          followers: string,
+          photos: string,
+          portfolio: string,
+          self: string,
+        },
+        location: string,
+        name: string,
+        portfolio_url: string,
+        profile_image: {
+          large: string,
+          medium: string,
+          small: string,
+        },
+        total_collections: number,
+        total_likes: number,
+        total_photos: number,
+        updated_at: string,
+        username: string,
+      },
+    }
+  ]
+}
+
+
+ interface SearchResult {
+  results: string[]
+ }
+
 export type PhotoList = Photo[];
 
 export type SinglePhoto = Photo;
@@ -229,3 +289,10 @@ export type SinglePhoto = Photo;
 export type CollectionList = Collection[];
 
 export type SingleCollection = Collection;
+
+export type Result = SearchResult;
+
+export type PhotoResult = SearchResult.results
+
+
+
