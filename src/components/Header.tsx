@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {  useState } from "react";
+import {  useState, useEffect } from "react";
 import {
   BsCameraFill,
   BsFillCollectionFill,
@@ -16,15 +16,17 @@ export default function Header() {
 
   const router = useRouter();
   const location = router.pathname;
+  const {redirect} = router.query
 
   const handleSearch = (event: { preventDefault: () => void; }) => {
-    const searchType = location === "/collections" ? "collections" : "photos";
+    const searchType = location === "/collections" || "/search/collections" ? "collections" : "photos";
     const numberOfItems = location === "/collections" ? 11 : 30;
+    const url = `search/${searchType}?client_id=${API_KEY}&query=${searchTerm}&per_page=${numberOfItems}`
 
     event.preventDefault();
-    router.push(`search/${searchType}?client_id=${API_KEY}&query=${searchTerm}&per_page=${numberOfItems}`);
+       router.push(`/${url}`);
   };
-//icons
+
   return (
     <header className="my-6">
       <nav className="flex">

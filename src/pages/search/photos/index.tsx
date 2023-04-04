@@ -9,7 +9,6 @@ export default function Photos() {
   const [searchPhotos, setSearchPhotos] = useState<SearchResult | null>(null);
   const router = useRouter();
   const  query  = router.query;
-  
 
   useEffect(() => {
     const queryString = Object.keys(query)
@@ -30,7 +29,7 @@ export default function Photos() {
   if (!searchPhotos) {
     return <div>Loading...</div>;
   }
-  console.log(searchPhotos);
+
   return (
     <Layout title={query.query}>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:mx-[200px]">
