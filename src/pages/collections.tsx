@@ -11,7 +11,6 @@ interface Props {
 }
 
 export default function Collections({ fetchCollections }: Props) {
-  console.log(fetchCollections.slice(3))
 
   return (
     <Layout title="collections-page">
