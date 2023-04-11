@@ -6,7 +6,7 @@ import {
   BsFillCollectionFill,
   BsFillHeartFill,
   BsSearch,
-} from "react-icons/Bs";
+} from "react-icons/bs";
 import ModeBtns from "./ModeBtns"
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
