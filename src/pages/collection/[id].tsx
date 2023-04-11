@@ -54,6 +54,11 @@ export default function CollectionDetaill() {
     return <div>Loading...</div>;
   }
 
+  const columns: PhotoList[] = [[], [], []];
+  collectionPhotos.forEach((photo, index) => {
+    columns[index % 3].push(photo);
+  });
+
   return (
     <Layout title={collectionDetail.title}>
       <div className="bg-gray-300 p-2 md:mx-auto rounded dark:bg-gray-700 md:p-4 lg:w-[900px]">
@@ -100,11 +105,15 @@ export default function CollectionDetaill() {
           </div>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 ">
-          {collectionPhotos.map((collectionPhoto: SinglePhoto) => (
-            <CollectionPhotos
-              key={collectionPhoto.id}
-              collectionPhoto={collectionPhoto}
-            />
+          {columns.map((column, index) => (
+            <div key={index}>
+              {column.map((collectionPhoto) => (
+                <CollectionPhotos
+                  key={collectionPhoto.id}
+                  collectionPhoto={collectionPhoto}
+                />
+              ))}
+            </div>
           ))}
         </div>
       </div>

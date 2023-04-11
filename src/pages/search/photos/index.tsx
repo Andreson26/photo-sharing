@@ -4,16 +4,16 @@ import { SearchResult, PhotoResult } from "../../../../typings";
 import Layout from "@/components/Layout";
 import PhotoItem from "@/components/PhotoItem";
 
-
 export default function Photos() {
   const [searchPhotos, setSearchPhotos] = useState<SearchResult | null>(null);
+
   const router = useRouter();
-  const  query  = router.query;
+  const query = router.query;
 
   useEffect(() => {
     const queryString = Object.keys(query)
-    .map((key) => key + "=" + query[key])
-    .join("&");
+      .map((key) => key + "=" + query[key])
+      .join("&");
 
     async function fetchSearchPhotos() {
       const searchPhotos = await fetch(
@@ -25,19 +25,29 @@ export default function Photos() {
       fetchSearchPhotos();
     }
   }, [query]);
-
   if (!searchPhotos) {
     return <div>Loading...</div>;
   }
 
+  const columns: PhotoResult[][] = [[], [], [], []];
+
+  searchPhotos.results.forEach((photo, index) => {
+    columns[index % 4].push(photo);
+  });
+
   return (
     <Layout title={query.query}>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:mx-[200px]">
-        {searchPhotos.results.map((photo: PhotoResult) => {
-          return <PhotoItem key={photo.id} photo={photo} />;
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:mx-[100px]">
+        {columns.map((column, ndex) => {
+          return (
+            <div key={ndex}>
+              {column.map((photo) => (
+                <PhotoItem key={photo.id} photo={photo} />
+              ))}
+            </div>
+          );
         })}
       </div>
     </Layout>
   );
 }
-

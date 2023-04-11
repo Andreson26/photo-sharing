@@ -1,5 +1,5 @@
 interface Photo {
-  [x: string]: ReactNode;
+ // [x: string]: ReactNode;
   id: string;
   created_at: string;
   updated_at: string;
@@ -283,6 +283,8 @@ const searchResult: SeachResult = {
  }
 
 export type PhotoList = Photo[];
+
+//export type Photo = Photo[];
 
 export type SinglePhoto = Photo;
 

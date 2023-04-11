@@ -10,19 +10,17 @@ interface Props {
 
 export default function CollectionPhotos({ collectionPhoto }: Props) {
   return (
-    <div className="group relative cursor-pointer">
-      <Link href={`/photo/${collectionPhoto.id}`}>
-        <p>
-          <img
-            src={collectionPhoto.urls.regular}
-            alt={collectionPhoto.alt_description}
-            className="rounded shadow object-cover h-64 w-full"
-          />
-        </p>
-        <p className="hoverable text-center">
-          {pluralSingular(collectionPhoto.likes)}
-        </p>
-      </Link>
-    </div>
+    <Link href={`/photo/${collectionPhoto.id}`} className="relative rounded shadow-md hover:shadow-lg transition duration-200 ease-in-out">
+      <p>
+        <img
+          src={collectionPhoto.urls.regular}
+          alt={collectionPhoto.alt_description}
+          className="rounded object-cover layout-fill mb-4"
+        />
+      </p>
+      <p className="hoverable text-center">
+        {pluralSingular(collectionPhoto.likes)}
+      </p>
+    </Link>
   );
 }

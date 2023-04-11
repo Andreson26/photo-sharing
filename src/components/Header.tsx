@@ -19,12 +19,12 @@ export default function Header() {
   const {redirect} = router.query
 
   const handleSearch = (event: { preventDefault: () => void; }) => {
-    const searchType = location === "/collections" || "/search/collections" ? "collections" : "photos";
-    const numberOfItems = location === "/collections" ? 11 : 30;
-    const url = `search/${searchType}?client_id=${API_KEY}&query=${searchTerm}&per_page=${numberOfItems}`
+    const searchType = location === "/collections" && "/search/collections" ? "collections" : "photos";
+    const numberOfItems = location === "/collections" && "/search/collections" ? 11 : 30;
+    const url = `/search/${searchType}?client_id=${API_KEY}&query=${searchTerm}&per_page=${numberOfItems}`
 
     event.preventDefault();
-       router.push(`/${url}`);
+       router.push(`${url}/?redirect=${redirect}`);
   };
 
   return (
