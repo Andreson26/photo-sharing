@@ -91,6 +91,7 @@ interface Photo {
     total_photos: number;
     accepted_tos: boolean;
   };
+  views: number;
 }
 
 interface Collection {

@@ -12,7 +12,7 @@ interface Props {
   photo: SinglePhoto;
 }
 
-export default function photoDetail() {
+export default function PhotoDetail() {
   const router = useRouter();
   const { id } = router.query;
   const [photoDetail, setPhotoDetail] = useState<SinglePhoto | null>(null);
